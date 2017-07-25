@@ -18,7 +18,7 @@ public class OrderRepositoryImpl implements OrderRepositoryCustom {
 	@Override
 	public List<Order> findSiAOrders() {
 		Result<Map<String, Object>> result = neo4jTemplate
-				.query("match (o:order)-[:HAS_ITEMS]->(i:Item) " + "where i.product='Spring in Action' return o", null);
+				.query("match (o:Order)-[:HAS_ITEMS]->(i:Item) " + "where i.product='Spring in Action' return o", null);
 		Result<Order> endResult = result.to(Order.class);
 		return IteratorUtil.asList(endResult);
 	}
